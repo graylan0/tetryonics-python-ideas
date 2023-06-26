@@ -43,9 +43,10 @@ def create_complex_particle(particle_list):
     return ComplexParticle(particle_list)
 
 def interact(particle1, particle2):
-    # This is a placeholder for a function that would simulate an interaction between two particles
-    # The result of the interaction could be a new particle or complex particle
-    pass
+    # This is a very simple interaction that just averages the orientations of the two particles
+    new_orientation = (particle1.total_orientation() + particle2.total_orientation()) / 2
+    new_quanta = [PlanckQuantum(new_orientation) for _ in range(len(particle1.quanta) + len(particle2.quanta))]
+    return create_particle(new_quanta)
 
 # Example usage:
 
